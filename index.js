@@ -1,8 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-const routes = require('./src/routes/routes');
 const app = express();
-const Port = 8080;
+require('./src/config/config'); // Importing database connection when server starts
+const routes = require('./src/routes/routes');
+const Port = process.env.PORT || 8080;
+require('./src/model/jotgle.schema')
+
 
 // Middleware to parse JSON bodies
 app.use(express.json());
